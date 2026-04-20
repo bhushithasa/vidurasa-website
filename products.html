@@ -10,7 +10,13 @@
 <body>
     <header>
         <div class="container nav-container">
-            <a href="index.html" class="logo">Vidurasa</a>
+            <a href="index.html" class="logo">
+                <img src="/vidurasalogo.png" alt="Vidurasa Logo">
+                <div class="brand-text">
+                    <span class="brand-title">VIDURASA AGRICULTURAL PRODUCTS</span>
+                    <span class="brand-subtitle">CEYLON'S PREMIUM SPICES</span>
+                </div>
+            </a>
             <button class="mobile-menu-btn">☰</button>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
@@ -22,37 +28,77 @@
     </header>
 
     <main>
-        <section class="section container">
-            <h1 class="section-title">Our Premium Products</h1>
-            <div class="products-grid">
-                <div class="product-card">
-                    <h3>Cinnamon Sticks</h3>
-                    <p style="margin-bottom: 1rem;">Available in premium grades:</p>
-                    <ul style="text-align: left; margin-left: 2rem; list-style: disc; margin-bottom: 1rem;">
-                        <li><strong>Alba:</strong> The highest quality, thinnest, and most prized grade.</li>
-                        <li><strong>C5:</strong> Highly sought after, smooth and slender.</li>
-                        <li><strong>C4:</strong> Standard premium grade, excellent flavor profile.</li>
-                    </ul>
+        <section class="section">
+            <div class="container">
+                <h1 class="section-title">Comprehensive Product Database</h1>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 3rem; color: var(--text-muted); line-height: 1.6;">Our product architecture is highly granular. We supply precise export grades aligned with international specifications—ranging from the visually flawless Alba to high-volume essential oil distillation chips.</p>
+            
+            <div class="matrix-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;">
+                <!-- Category 1 -->
+                <div class="product-visual-card" data-id="alba">
+                    <img src="https://picsum.photos/seed/cinnamon1/800/600" alt="ALBA (5 Inch)" class="product-visual-img" referrerPolicy="no-referrer">
+                    <div class="product-visual-content">
+                        <h3 class="product-visual-title">ALBA (5 Inch)</h3>
+                        <button class="btn-see-more">See More</button>
+                    </div>
                 </div>
-                <div class="product-card">
-                    <h3>Cinnamon Powder</h3>
-                    <p>Finely ground Ceylon cinnamon, perfect for culinary uses, baking, and beverages. Retains the delicate, sweet aroma of true cinnamon.</p>
+
+                <!-- Category 2 -->
+                <div class="product-visual-card" data-id="special">
+                    <img src="https://picsum.photos/seed/cinnamon2/800/600" alt="Extra Special & Special" class="product-visual-img" referrerPolicy="no-referrer">
+                    <div class="product-visual-content">
+                        <h3 class="product-visual-title">Extra Special & Special</h3>
+                        <button class="btn-see-more">See More</button>
+                    </div>
                 </div>
-                <div class="product-card">
-                    <h3>Cinnamon Quillings</h3>
-                    <p>Broken pieces of cinnamon sticks resulting from the baling process. Excellent for grinding or essential oil extraction.</p>
+
+                <!-- Category 3 -->
+                <div class="product-visual-card" data-id="c-grades">
+                    <img src="https://picsum.photos/seed/cinnamon3/800/600" alt="C-Grades: C5, C4" class="product-visual-img" referrerPolicy="no-referrer">
+                    <div class="product-visual-content">
+                        <h3 class="product-visual-title">C-Grades: C5, C4</h3>
+                        <button class="btn-see-more">See More</button>
+                    </div>
                 </div>
-                <div class="product-card">
-                    <h3>Cinnamon Cut Pieces</h3>
-                    <p>Uniformly cut pieces of cinnamon sticks, ideal for tea bags, potpourri, and culinary applications requiring whole spices.</p>
+
+                <!-- Category 4 -->
+                <div class="product-visual-card" data-id="h-grades">
+                    <img src="https://picsum.photos/seed/cinnamon4/800/600" alt="H-Grades: H1, H2" class="product-visual-img" referrerPolicy="no-referrer">
+                    <div class="product-visual-content">
+                        <h3 class="product-visual-title">H-Grades: H1, H2</h3>
+                        <button class="btn-see-more">See More</button>
+                    </div>
                 </div>
-                <div class="product-card">
-                    <h3>Black Pepper</h3>
-                    <p>High-quality Sri Lankan black pepper, known for its high piperine content, strong aroma, and bold flavor.</p>
+
+                <!-- Category 5 -->
+                <div class="product-visual-card" data-id="industrial">
+                    <img src="https://picsum.photos/seed/cinnamon5/800/600" alt="Industrial Grades" class="product-visual-img" referrerPolicy="no-referrer">
+                    <div class="product-visual-content">
+                        <h3 class="product-visual-title">Industrial Grades</h3>
+                        <button class="btn-see-more">See More</button>
+                    </div>
                 </div>
+            </div>
             </div>
         </section>
     </main>
+
+    <!-- Product Details Modal -->
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <div class="close-modal-wrapper">
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <img id="modalImg" src="" alt="Product Image" class="modal-img" referrerPolicy="no-referrer">
+                <h2 id="modalTitle" class="modal-title"></h2>
+                <div id="modalDesc"></div>
+                <div style="margin-top: 30px; padding-top: 25px; border-top: 1px solid var(--border); text-align: center;">
+                    <a href="index.html#contact" class="modal-contact-link" style="display: inline-block; background-color: #d4a373; color: white; padding: 12px 30px; border-radius: 4px; font-weight: 600; text-decoration: none; transition: background 0.3s;">Contact for Pricing & Orders</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <footer>
         <div class="container">

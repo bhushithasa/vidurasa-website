@@ -10,7 +10,13 @@
 <body>
     <header>
         <div class="container nav-container">
-            <a href="index.html" class="logo">Vidurasa</a>
+            <a href="index.html" class="logo">
+                <img src="/vidurasalogo.png" alt="Vidurasa Logo">
+                <div class="brand-text">
+                    <span class="brand-title">VIDURASA AGRICULTURAL PRODUCTS</span>
+                    <span class="brand-subtitle">CEYLON'S PREMIUM SPICES</span>
+                </div>
+            </a>
             <button class="mobile-menu-btn">☰</button>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
@@ -22,46 +28,83 @@
     </header>
 
     <main>
-        <section class="section container">
-            <h1 class="section-title">Contact Us</h1>
-            <div class="contact-container">
-                <div class="contact-info">
-                    <h3>Get in Touch</h3>
-                    <p style="margin-bottom: 2rem;">We supply premium Ceylon cinnamon and black pepper to international buyers. Contact us for wholesale inquiries and quotes.</p>
-                    
-                    <div class="info-item">
-                        <span class="info-label">WhatsApp / Phone</span>
-                        <span><a href="tel:+94718313119">+94 71 83 13 119</a></span>
+        <section class="section">
+            <div class="container">
+                <h1 class="section-title">Request a Wholesale Quote</h1>
+                <div class="contact-container">
+                    <div class="contact-info" style="display: flex; flex-direction: column; gap: 20px;">
+                        <!-- Contact Details on Top -->
+                        <div style="padding: 2rem; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.02);">
+                            <h3 style="margin-top: 0; margin-bottom: 1.5rem;">Business Contact Details</h3>
+                            
+                            <div class="info-item">
+                                <span class="info-label">WhatsApp / Direct Sales</span>
+                                <span><a href="tel:+94718313119" style="color: #0056b3; text-decoration: underline; font-weight: 500; font-size: 15px;">+94 71 83 13 119</a></span>
+                            </div>
+                            
+                            <div class="info-item">
+                                <span class="info-label">Email</span>
+                                <span><a href="mailto:info@vidurasa.com" style="color: #0056b3; text-decoration: underline; font-weight: 500; font-size: 15px;">info@vidurasa.com</a></span>
+                            </div>
+                            
+                            <div class="info-item" style="margin-bottom: 0;">
+                                <span class="info-label">Origin & Logistics</span>
+                                <span style="font-size: 14px; font-weight: 500;">Vidurasa Agricultural Products<br>Monaragala, Sri Lanka<br><span style="font-size: 12px; color: var(--text-muted); margin-top: 4px; display: block; font-weight: normal;">Ships globally via Port of Colombo</span></span>
+                            </div>
+                        </div>
+                        
+                        <!-- Map Below Contact Details -->
+                        <iframe 
+                            src="https://maps.google.com/maps?q=Vidurasa%20Agricultural%20Products%2C%20Monaragala&t=&z=13&ie=UTF8&iwloc=&output=embed" 
+                            width="100%" 
+                            height="300" 
+                            style="border:0; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
                     </div>
-                    
-                    <div class="info-item">
-                        <span class="info-label">Email</span>
-                        <span><a href="mailto:info@vidurasa.com">info@vidurasa.com</a></span>
-                    </div>
-                    
-                    <div class="info-item">
-                        <span class="info-label">Location</span>
-                        <span>Sri Lanka</span>
+
+                    <div style="display: flex; flex-direction: column; height: 100%;">
+                        <h3>Tell Us Your Requirements</h3>
+                        <form id="contactForm" class="contact-form" action="https://formspree.io/f/xyklergg" method="POST" style="flex: 1;">
+                            <div class="form-group">
+                                <label for="name">Company Name & Contact Person</label>
+                                <input type="text" id="name" name="name" placeholder="e.g. Acme Spices Ltd. - John Doe" required>
+                            </div>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                                <div class="form-group" style="margin-bottom: 0;">
+                                    <label for="email">Business Email</label>
+                                    <input type="email" id="email" name="email" placeholder="john@company.com" required>
+                                </div>
+                                <div class="form-group" style="margin-bottom: 0;">
+                                    <label for="country">Destination Country</label>
+                                    <input type="text" id="country" name="country" placeholder="e.g. UK, Germany" required>
+                                </div>
+                            </div>
+                            <div class="form-group" style="margin-top: 10px; flex: 1; display: flex; flex-direction: column;">
+                                <label for="message">Products Needed & Estimated Volume</label>
+                                <textarea id="message" name="message" placeholder="Please specify the grades (e.g. Alba, C5) and approximate monthly or one-off volume you require..." style="flex: 1; min-height: 180px; resize: none;" required></textarea>
+                            </div>
+                            <div id="form-feedback" style="display: none; padding: 12px; margin-bottom: 15px; border-radius: 4px; text-align: center; font-size: 14px;"></div>
+                            <button type="submit" id="submitBtn" class="btn" style="width: 100%; padding: 16px; font-size: 14px;">Get Your Custom Quote</button>
+                            <p style="text-align: center; font-size: 10px; color: var(--text-muted); margin-top: 15px; text-transform: uppercase; font-weight: bold; letter-spacing: 0.5px;">🔒 Your business details are strictly confidential</p>
+                        </form>
                     </div>
                 </div>
 
-                <div>
-                    <h3>Send us a Message</h3>
-                    <form action="https://formspree.io/f/xdoqgqol" method="POST" class="contact-form">
-                        <div class="form-group">
-                            <label for="name">Name / Company</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message / Inquiry</label>
-                            <textarea id="message" name="message" required></textarea>
-                        </div>
-                        <button type="submit" class="btn">Send Message</button>
-                    </form>
+                <!-- Other Details moved to the bottom -->
+                <div style="margin-top: 5rem; text-align: center; max-width: 900px; margin-left: auto; margin-right: auto;">
+                    <h3 style="font-family: var(--f-serif); font-size: 24px; color: var(--primary); margin-bottom: 15px;">Partner for Global Export</h3>
+                    <p style="margin-bottom: 2.5rem; color: var(--text-muted); line-height: 1.6; font-size: 15px;">Secure a reliable supply chain of authentic Ceylon spices. We are an export-focused operation working directly with international importers, distributors, and manufacturers.<br><strong style="color: var(--text-main);">We respond to all inquiries within 24 hours.</strong></p>
+                    
+                    <div style="background: var(--surface); padding: 2.5rem; border: 1px solid var(--border); border-radius: 8px; text-align: left;">
+                        <ul style="list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px; font-size: 14px;">
+                            <li><strong style="color: var(--primary); display: block; margin-bottom: 8px; font-size: 15px;">⏱️ 24h Response</strong> Official quotes provided within 24 working hours.</li>
+                            <li><strong style="color: var(--primary); display: block; margin-bottom: 8px; font-size: 15px;">📦 Flexible MOQ</strong> Scalable minimum order quantities to suit your distribution needs.</li>
+                            <li><strong style="color: var(--primary); display: block; margin-bottom: 8px; font-size: 15px;">📋 Export Verified</strong> Full documentation included (Phytosanitary, Certificate of Origin, QA).</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
