@@ -541,7 +541,7 @@ footer .container {
 .modal-title {
     color: var(--text-main);
     font-size: 1.5rem;
-    border-bottom: 2px solid #d4a373;
+    border-bottom: 2px solid #E36414;
     padding-bottom: 15px;
     margin-bottom: 20px;
     margin-top: 0;
@@ -587,8 +587,8 @@ footer .container {
 
 .btn-see-more {
     background-color: transparent;
-    border: 1px solid #d4a373;
-    color: #d4a373;
+    border: 1px solid #E36414;
+    color: #E36414;
     padding: 12px 15px;
     text-align: center;
     border-radius: 4px;
@@ -598,6 +598,6 @@ footer .container {
 }
 
 .btn-see-more:hover {
-    background-color: #d4a373;
+    background-color: #E36414;
     color: white;
 }
