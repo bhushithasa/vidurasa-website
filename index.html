@@ -4,29 +4,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coming Soon | Vidurasa Agricultural Products</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="apple-touch-icon" href="/favicon.png">
+    <meta property="og:image" content="https://vidurasa.com/vidurasalogo.png">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Vidurasa Agricultural Products",
+      "url": "https://vidurasa.com/",
+      "logo": "https://vidurasa.com/vidurasalogo.png"
+    }
+    </script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SFJ197ZGCZ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-SFJ197ZGCZ');
+    </script>
     <link rel="stylesheet" href="style.css">
     <style>
         body {
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             background: var(--surface);
             text-align: center;
-            padding: 20px;
+            padding: 40px 20px;
         }
         .coming-soon-card {
             background: white;
             padding: 60px 40px;
             border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
             max-width: 600px;
             width: 100%;
             border: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         .cs-logo {
-            height: 100px;
-            margin-bottom: 30px;
+            width: 160px;
+            height: auto;
+            display: block;
+            margin: 0 auto 30px;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.05));
         }
         .cs-title {
             font-family: var(--f-serif);
@@ -63,7 +89,7 @@
 </head>
 <body>
     <div class="coming-soon-card">
-        <img src="vidurasalogo.png" alt="Vidurasa Logo" class="cs-logo">
+        <img src="/vidurasalogo.png" alt="Vidurasa Logo" class="cs-logo">
         <h1 class="cs-title">Something Beautiful is Brewing</h1>
         <div class="cs-divider"></div>
         <p class="cs-text">
