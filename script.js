@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const productData = {
         'alba': {
             title: 'ALBA (5 Inch)',
-            img: 'public/product-image.png',
+            img: '/public/product-image.png',
             desc: `
                 <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 15px;">The most prized, ultra-premium grade of Ceylon Cinnamon. Highly sought after for its exceptional sweetness, fragile bark, and visual perfection.</p>
                 <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.95rem; color: var(--text-main);">
@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         'special': {
             title: 'Extra Special & Special',
-            img: 'public/product-image.png',
+            img: '/public/product-image.png',
             desc: `
                 <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 15px;">Top-tier premium grades remaining highly delicate. Features exceptionally thin bark with a nuanced and aromatic sweetness.</p>
                 <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.95rem; color: var(--text-main);">
@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         'c-grades': {
             title: 'C-Grades: C5, C4',
-            img: 'public/product-image.png',
+            img: '/public/product-image.png',
             desc: `
                 <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 15px;">Continental grades offering a perfect balance of excellent flavor profile and physical structural integrity for handling.</p>
                 <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.95rem; color: var(--text-main);">
@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         'h-grades': {
             title: 'H-Grades: H1, H2',
-            img: 'public/product-image.png',
+            img: '/public/product-image.png',
             desc: `
                 <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 15px;">Hamburg grades composed of heavier, thicker bark components. Delivers a highly robust flavor profile and darker color.</p>
                 <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.95rem; color: var(--text-main);">
@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         'industrial': {
             title: 'Industrial & Lower Grades',
-            img: 'public/product-image.png',
+            img: '/public/product-image.png',
             desc: `
                 <div style="display: flex; flex-direction: column; gap: 15px;">
                     <div style="background: #fafafa; padding: 15px; border-radius: 5px; border: 1px solid #f0f0f0;">
