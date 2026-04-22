@@ -1,7 +1,7 @@
 const { Jimp } = require('jimp');
 
 async function main() {
-  const logo = await Jimp.read('public/vidurasalogo.png');
+  const logo = await Jimp.read('vidurasalogo.png');
   
   // Create a 512x512 white background
   const bg = new Jimp({ width: 512, height: 512, color: 0xFFFFFFFF });
