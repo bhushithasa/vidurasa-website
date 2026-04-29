@@ -3,102 +3,535 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coming Soon | Vidurasa Agricultural Products</title>
-    <meta name="description" content="Our premium digital spice market is currently under construction. We are preparing to bring you the finest Ceylon Cinnamon and agricultural heritage.">
-    <link rel="icon" type="image/png" href="/public/favicon.png">
-    <link rel="apple-touch-icon" href="/public/favicon.png">
-    <meta property="og:image" content="https://vidurasa.com/public/vidurasalogo.png?v=2">
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "Vidurasa Agricultural Products",
-      "url": "https://vidurasa.com/",
-      "logo": "https://vidurasa.com/public/vidurasalogo.png?v=2"
-    }
-    </script>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SFJ197ZGCZ"></script>
+    <title>Vidurasa Agricultural Products | Premium Ceylon Cinnamon</title>
+    <meta name="description" content="Vidurasa Agricultural Products - Premium Ceylon Cinnamon exporter and supplier from Sri Lanka. High quality grading, own processing capability, competitive pricing.">
+    <meta name="keywords" content="Ceylon Cinnamon, Cinnamon Exporter, Sri Lanka Spices, Alba Cinnamon, Vidurasa Agricultural Products">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://vidurasa.com/">
+    
+    <!-- Open Graph for social sharing -->
+    <meta property="og:title" content="Vidurasa Agricultural Products | Premium Ceylon Cinnamon">
+    <meta property="og:description" content="Premium Ceylon Cinnamon exporter from Sri Lanka. High quality grading, own processing, competitive pricing.">
+    <meta property="og:image" content="https://vidurasa.com/images/vidurasalogo.png">
+    <meta property="og:url" content="https://vidurasa.com/">
+    <meta property="og:type" content="website">
+
+    <link rel="icon" type="image/png" href="/images/favicon.png">
+    <link rel="apple-touch-icon" href="/images/favicon.png">
+    <link rel="stylesheet" href="style.css?v=13">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Montserrat:wght@600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Google tag (gtag.js) with Consent Mode -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
+      
+      // Default to granted for soft opt-in approach
+      const hasConsent = localStorage.getItem('cookieConsent');
+      gtag('consent', 'default', {
+        'analytics_storage': hasConsent === 'declined' ? 'denied' : 'granted'
+      });
+    </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SFJ197ZGCZ"></script>
+    <script>
       gtag('js', new Date());
       gtag('config', 'G-SFJ197ZGCZ');
     </script>
-    <link rel="stylesheet" href="style.css">
-    <style>
-        body {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--surface);
-            text-align: center;
-            padding: 40px 20px;
-        }
-        .coming-soon-card {
-            background: white;
-            padding: 60px 40px;
-            border-radius: 12px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
-            max-width: 600px;
-            width: 100%;
-            border: 1px solid var(--border);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .cs-logo {
-            width: 160px;
-            height: auto;
-            display: block;
-            margin: 0 auto 30px;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.05));
-        }
-        .cs-title {
-            font-family: var(--f-serif);
-            font-size: 32px;
-            color: var(--secondary);
-            margin-bottom: 20px;
-        }
-        .cs-divider {
-            width: 60px;
-            height: 3px;
-            background: #E36414;
-            margin: 0 auto 30px;
-        }
-        .cs-text {
-            color: var(--text-muted);
-            font-size: 18px;
-            line-height: 1.6;
-            margin-bottom: 40px;
-        }
-        .contact-pill {
-            display: inline-block;
-            background: var(--secondary);
-            color: white;
-            padding: 12px 30px;
-            border-radius: 4px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: background 0.3s;
-        }
-        .contact-pill:hover {
-            background: #E36414;
-        }
-    </style>
+    <!-- Redirect www to non-www -->
+    <script>
+      if (window.location.hostname === 'www.vidurasa.com') {
+        window.location.replace('https://vidurasa.com' + window.location.pathname + window.location.search);
+      }
+    </script>
 </head>
 <body>
-    <div class="coming-soon-card">
-        <img src="/public/vidurasalogo.png?v=2" alt="Vidurasa Logo" class="cs-logo">
-        <h1 class="cs-title">Something Beautiful is Brewing</h1>
-        <div class="cs-divider"></div>
-        <p class="cs-text">
-            Our premium digital spice market is currently under construction. 
-            We are preparing to bring you the finest Ceylon Cinnamon and agricultural heritage.
-        </p>
-        <p style="margin-bottom: 10px; font-weight: 700; color: var(--text-main); font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">In the meantime</p>
-        <a href="mailto:info@vidurasa.com" class="contact-pill">Connect with Us</a>
+    <header id="main-header">
+        <div class="container nav-container">
+            <a href="#home" class="logo">
+                <img src="/images/vidurasalogo.png" alt="Vidurasa Agricultural Products - True Ceylon Cinnamon Supplier Logo" loading="lazy">
+                <div class="brand-text">
+                    <span class="brand-title">VIDURASA AGRICULTURAL PRODUCTS</span>
+                    <span class="brand-subtitle">CEYLON'S PREMIUM SPICES</span>
+                </div>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Toggle navigation">☰</button>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="home">
+            <div class="hero-section">
+                <div class="container hero-content">
+                    <h1>Premium Ceylon Cinnamon Direct From Sri Lanka</h1>
+                    <p>Authentic, high-grade spices processed at source. Serving international importers, distributors, and wholesalers with uncompromised quality.</p>
+                    <div class="hero-actions">
+                        <a href="#products" class="btn btn-secondary">View Our Grades</a>
+                        <a href="https://wa.me/94718313119?text=Hello%20ViduRasa,%20I'm%20interested%20in%20your%20Ceylon%20cinnamon.%20Please%20send%20pricing%20and%20specifications." target="_blank" rel="noopener" class="btn btn-whatsapp">Chat on WhatsApp</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section reveal" style="background-color: #F9F8F4; padding: 64px 16px;">
+                <div class="container">
+                    <div>
+                        <div class="sticky-main-title">
+                            <h2 class="value-main-title">Why Ceylon Cinnamon is the World's True Cinnamon</h2>
+                            <p class="value-sub-title">Scientifically pure. Naturally refined. Grown only in Sri Lanka.</p>
+                        </div>
+                    
+                        <div class="scrollytelling-section" id="scrollySection">
+                    <div class="scrolly-text">
+                        <div class="editorial-content">
+                            <!-- Section 0 -->
+                            <div class="scroll-trigger" data-step="0">
+                                <h4 class="editorial-subtitle">Origin of Ceylon Cinnamon</h4>
+                                <div class="mobile-visual-item">
+                                    <img src="/images/about-origin-plantation.png" alt="Lush green Ceylon cinnamon plantation growing true cinnamon in Sri Lanka" loading="lazy">
+                                    <div class="highlight-card">
+                                        <h4>True Cinnamon – <i>Cinnamomum verum</i></h4>
+                                        <p>The only authentic "True Cinnamon" natively grown in Sri Lanka, prized globally for its heritage and chemical purity.</p>
+                                    </div>
+                                </div>
+                                <p>Ceylon cinnamon, scientifically known as <i>Cinnamomum verum J. Presl</i> (also referred to as <i>Cinnamomum zeylanicum</i>), is recognized as "true cinnamon" and is primarily grown in Sri Lanka. The commonly used alternative, cassia (Cinnamomum cassia or Cinnamomum aromaticum), differs significantly in composition, flavor intensity, and safety profile.</p>
+                                <p>Sri Lanka has been at the center of the global cinnamon trade for centuries, with deep historical links to ancient trade routes and long-established cultivation and processing practices. Today, Ceylon cinnamon remains one of the country's signature agricultural products, known for its origin authenticity, consistent quality, and strong international reputation.</p>
+                            </div>
+                            
+                            <!-- Section 1 -->
+                            <div class="scroll-trigger" data-step="1">
+                                <h4 class="editorial-subtitle">Structure & Composition</h4>
+                                <div class="mobile-visual-item">
+                                    <img src="/images/cinnamon-cassia-compare.png" alt="Visual comparison showing the differences between true Ceylon cinnamon and common Cassia cinnamon" class="contain-img" loading="lazy">
+                                    <div class="highlight-card">
+                                        <h4>Safety Profile – Low Coumarin</h4>
+                                        <p>Contains negligible coumarin levels compared to Cassia, making it the preferred choice for regular health and culinary use.</p>
+                                    </div>
+                                </div>
+                                <p>From a scientific and commercial perspective, Ceylon cinnamon is distinguished by its thin, multi-layered quill structure, light tan-brown color, delicate aroma, and mild, naturally sweet flavor. These characteristics make it especially suitable for premium food, beverage, and wellness applications where balance and refinement are important.</p>
+                                <p>The primary natural compounds in Ceylon cinnamon include cinnamaldehyde, (E)-cinnamyl acetate, and cinnamic acid, which contribute to its characteristic aroma and functional properties.</p>
+                            </div>
+
+                            <!-- Section 2 -->
+                            <div class="scroll-trigger" data-step="2">
+                                <h4 class="editorial-subtitle">Health & Safety</h4>
+                                <div class="mobile-visual-item">
+                                    <img src="/images/product-image.png" alt="Close-up of premium, thin, and multi-layered true Ceylon cinnamon quills" loading="lazy">
+                                    <div class="highlight-card">
+                                        <h4>Refined Flavor – Mild & Sweet</h4>
+                                        <p>Distinguished by its multi-layered quills and a delicate, aromatic profile that enhances flavors without being overpowering.</p>
+                                    </div>
+                                </div>
+                                <p>A key difference between Ceylon cinnamon and cassia lies in coumarin content. Cassia cinnamon may contain higher levels of coumarin, whereas Ceylon cinnamon contains only very low levels. This makes it a preferred choice for applications involving regular consumption and controlled ingredient profiles.</p>
+                                <p>Ceylon cinnamon has been widely studied for its natural properties, including antioxidant and antimicrobial activity. While research continues to explore its potential role in areas such as metabolic health, it is primarily valued as a natural food ingredient rather than a medical treatment.</p>
+                            </div>
+
+                            <!-- Section 3 -->
+                            <div class="scroll-trigger" data-step="3">
+                                <h4 class="editorial-subtitle">Flavor & Commercial Value</h4>
+                                <div class="mobile-visual-item">
+                                    <img src="/images/about-origin-working.png" alt="Skilled artisans performing traditional hand-peeling and processing of Ceylon cinnamon bark" loading="lazy">
+                                    <div class="highlight-card">
+                                        <h4>Source Direct – Export Ready</h4>
+                                        <p>Traditional Sri Lankan processing expertise ensures high essential oil content and adherence to international quality standards.</p>
+                                    </div>
+                                </div>
+                                <p>Due to its mild and refined flavor, Ceylon cinnamon allows manufacturers to achieve balanced formulations with reduced reliance on harsher cinnamon varieties. It is widely used in bakery products, teas, spice blends, desserts, and premium food applications.</p>
+                                <p>For buyers and product developers, Ceylon cinnamon offers clear advantages: improved flavor control, suitability for regular-use formulations, strong origin recognition, and consistent quality supported by traditional Sri Lankan processing expertise. These factors make it a reliable and premium choice for long-term sourcing and product positioning.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="scrolly-visual">
+                        <div class="scrolly-visual-inner">
+                            <div class="visual-track" id="visualTrack">
+                                <!-- Step 0 -->
+                                <div class="visual-item">
+                                    <img src="/images/about-origin-plantation.png" alt="Lush green Ceylon cinnamon plantation growing true cinnamon in Sri Lanka" loading="lazy">
+                                    <div class="highlight-card">
+                                        <h4>True Cinnamon – <i>Cinnamomum verum</i></h4>
+                                        <p>The only authentic "True Cinnamon" natively grown in Sri Lanka, prized globally for its heritage and chemical purity.</p>
+                                    </div>
+                                </div>
+                                <!-- Step 1 -->
+                                <div class="visual-item">
+                                    <img src="/images/cinnamon-cassia-compare.png" alt="Visual comparison showing the differences between true Ceylon cinnamon and common Cassia cinnamon" class="contain-img" loading="lazy">
+                                    <div class="highlight-card">
+                                        <h4>Safety Profile – Low Coumarin</h4>
+                                        <p>Contains negligible coumarin levels compared to Cassia, making it the preferred choice for regular health and culinary use.</p>
+                                    </div>
+                                </div>
+                                <!-- Step 2 -->
+                                <div class="visual-item">
+                                    <img src="/images/product-image.png" alt="Close-up of premium, thin, and multi-layered true Ceylon cinnamon quills" loading="lazy">
+                                    <div class="highlight-card">
+                                        <h4>Refined Flavor – Mild & Sweet</h4>
+                                        <p>Distinguished by its multi-layered quills and a delicate, aromatic profile that enhances flavors without being overpowering.</p>
+                                    </div>
+                                </div>
+                                <!-- Step 3 -->
+                                <div class="visual-item">
+                                    <img src="/images/about-origin-working.png" alt="Skilled artisans performing traditional hand-peeling and processing of Ceylon cinnamon bark" loading="lazy">
+                                    <div class="highlight-card">
+                                        <h4>Source Direct – Export Ready</h4>
+                                        <p>Traditional Sri Lankan processing expertise ensures high essential oil content and adherence to international quality standards.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                
+                <p class="value-micro-trust">Direct from Sri Lankan source · Traditional processing · Export-ready quality</p>
+            </div>
+        </div>
+        </div>
+        </section>
+
+        <section id="products" class="section bg-light reveal" style="padding-bottom: 0;">
+            <div class="container">
+                <div class="section-header sticky-products-header">
+                    <h2>Our Product Range</h2>
+                    <p>Meticulously graded Ceylon Cinnamon to meet diverse international requirements. From the rarest Alba grade to industrial cut pieces.</p>
+                </div>
+                     <div class="product-grid">
+                    <div class="product-card clickable-card" data-product="alba">
+                        <div class="card-tag">Premium</div>
+                        <img src="/images/alba.png" alt="Alba grade Ceylon cinnamon sticks known for their slenderness and premium quality" class="product-img" loading="lazy">
+                        <div class="product-info">
+                            <h3>Cinnamon Sticks (Alba)</h3>
+                            <p>The finest and most prized grade. Slender, highly aromatic, and sweet.</p>
+                            <span class="view-details">Click to View Details</span>
+                        </div>
+                    </div>
+                    <div class="product-card clickable-card" data-product="c5">
+                        <img src="/images/c5.png" alt="C5 grade Ceylon cinnamon sticks offering an excellent balance of flavor and thickness" class="product-img" loading="lazy">
+                        <div class="product-info">
+                            <h3>Cinnamon Sticks (C5)</h3>
+                            <p>High-quality continental grade with a smooth texture and rich flavor.</p>
+                            <span class="view-details">Click to View Details</span>
+                        </div>
+                    </div>
+                    <div class="product-card clickable-card" data-product="c4">
+                        <img src="/images/c4.png" alt="C4 grade Ceylon cinnamon sticks, a popular choice for authentic flavor profiling" class="product-img" loading="lazy">
+                        <div class="product-info">
+                            <h3>Cinnamon Sticks (C4)</h3>
+                            <p>Classic continental grade, versatile for culinary use.</p>
+                            <span class="view-details">Click to View Details</span>
+                        </div>
+                    </div>
+                    <div class="product-card clickable-card" data-product="h">
+                        <img src="/images/h.png" alt="Hamburg Grade Ceylon Cinnamon Sticks" class="product-img" loading="lazy">
+                        <div class="product-info">
+                            <h3>Cinnamon Sticks (H)</h3>
+                            <p>Harder quills ideal for grinding and industrial food applications.</p>
+                            <span class="view-details">Click to View Details</span>
+                        </div>
+                    </div>
+                    <div class="product-card clickable-card" data-product="powder">
+                        <img src="/images/powder.png" alt="Finely ground, pure Ceylon cinnamon powder with a delicate, sweet aroma" class="product-img" loading="lazy">
+                        <div class="product-info">
+                            <h3>Cinnamon Powder</h3>
+                            <p>Finely ground from premium quills, maintaining high essential oil content.</p>
+                            <span class="view-details">Click to View Details</span>
+                        </div>
+                    </div>
+                    <div class="product-card clickable-card" data-product="quillings">
+                        <img src="/images/quillings.png" alt="Broken pieces of Ceylon cinnamon bark known as quillings, perfect for teas and extracts" class="product-img" loading="lazy">
+                        <div class="product-info">
+                            <h3>Cinnamon Quillings</h3>
+                            <p>Broken cinnamon pieces, perfect for extraction and tea blends.</p>
+                            <span class="view-details">Click to View Details</span>
+                        </div>
+                    </div>
+                    <div class="product-card clickable-card" data-product="cut-pieces">
+                        <img src="/images/cut.png" alt="Uniformly cut pieces of true Ceylon cinnamon sticks prepared for culinary and retail use" class="product-img" loading="lazy">
+                        <div class="product-info">
+                            <h3>Cinnamon Cut Pieces</h3>
+                            <p>Precisely cut lengths for specialized retail and food service packaging.</p>
+                            <span class="view-details">Click to View Details</span>
+                        </div>
+                    </div>
+                    <div class="product-card custom-card clickable-card" data-product="custom">
+                        <div class="custom-card-inner">
+                            <div class="custom-icon">✨</div>
+                            <h3>Custom & Value-Added</h3>
+                            <p>Processing on request for specialized industrial or retail needs.</p>
+                            <span class="view-details" style="color: var(--accent);">Learn More</span>
+                        </div>
+                    </div>
+                </div>        </div>
+                
+                <div class="product-footer-note">
+                    <p>Request a quote to receive customized pricing and shipping options based on your destination.</p>
+                </div>
+                
+                <!-- Spacer -->
+                <div style="height: 80px; width: 100%; pointer-events: none;"></div>
+            </div>
+        </section>
+
+        <section id="about" class="section reveal about-scrolling-bg">
+            <div class="bg-scroll-wrapper">
+                <div class="bg-scroll-container">
+                    <div class="bg-scroll-track" id="bgScrollTrack">
+                        <img src="/images/hero-cinnamon-wide.png" alt="Wide view of harvested Ceylon cinnamon rolls drying in a warm environment" loading="lazy">
+                        <img src="/images/about-origin-plantation.png" alt="Scenic background view of a sustainable Ceylon cinnamon plantation in Monaragala" loading="lazy">
+                        <img src="/images/about-origin-working.png" alt="Background displaying the authentic hand-crafting process of Ceylon cinnamon" loading="lazy">
+                        <img src="/images/product-image.png" alt="Beautifully layered backdrop of freshly prepared Ceylon cinnamon quills" loading="lazy">
+                        <img src="/images/hero-cinnamon-wide-1.png" alt="Aesthetic wide landscape of a thriving Ceylon cinnamon agricultural estate" loading="lazy">
+                    </div>
+                    <script>
+                        const track = document.getElementById('bgScrollTrack');
+                        if (track) {
+                            const clones = Array.from(track.children).map(img => {
+                                const clone = img.cloneNode(true);
+                                clone.setAttribute('alt', '');
+                                clone.setAttribute('aria-hidden', 'true');
+                                return clone;
+                            });
+                            clones.forEach(clone => track.appendChild(clone));
+                        }
+                    </script>
+                </div>
+                <div class="about-overlay"></div>
+            </div>
+            <div class="container relative-z">
+                <div class="about-grid-new">
+                    <div class="about-content">
+                        <h2 class="sticky-about-title">About Vidurasa</h2>
+                         <div class="about-lead">
+                            <p>Vidurasa Agricultural Products is a Sri Lankan Ceylon cinnamon business focused on quality, consistency, and buyer trust. Based in Monaragala, we source, process, and prepare cinnamon with care, serving the export market with a long-term, professional approach.</p>
+                        </div>
+                        
+                        <div class="about-details">
+                            <p>Vidurasa Agricultural Products is a Sri Lankan cinnamon business built around one simple idea: <strong>delivering true Ceylon cinnamon with consistency, trust, and export-ready quality</strong>. Based in Monaragala, Sri Lanka, Vidurasa works closely with local growers and skilled processors to <strong>source and prepare cinnamon in a way that respects both the product and its origin</strong>. Our focus is not on quick sales, but on <strong>building long-term relationships with buyers</strong> who value reliability, clean presentation, and dependable supply.</p>
+
+                            <p>Ceylon cinnamon is more than a spice. It is one of Sri Lanka’s most respected natural products, <strong>known worldwide for its soft layers, gentle aroma, and premium character</strong>. Vidurasa takes pride in being part of that heritage. We understand that international buyers are not only looking for a product, but also for <strong>confidence in where it comes from</strong>, how it is handled, and whether the supplier understands export expectations. That is why our approach combines <strong>practical field knowledge, careful grading</strong>, and a clear commitment to professionalism.</p>
+
+                            <p>Our business model is built around <strong>real supply chain activity</strong>. We buy cinnamon from farmers, <strong>process our own cinnamon harvest</strong>, and continue developing our capability to handle more raw cinnamon stems for in-house processing. This gives us <strong>greater control over quality</strong> and helps us stay connected to the source. Every step matters: the raw material, the processing, the grading, and the final presentation all contribute to the value of the cinnamon we supply. We believe that <strong>quality begins from the soil</strong>, the plant, and the people behind it.</p>
+
+                            <p>Sri Lanka’s climate and fertile land give Ceylon cinnamon its unique identity, and Vidurasa works within that natural advantage to present a product that reflects the island’s reputation as the <strong>Pearl of the Indian Ocean</strong>. Our goal is to make that identity visible to buyers through <strong>clear product information, honest communication, and a serious export mindset</strong>.</p>
+
+                            <p>At Vidurasa, we are building toward a stronger future in the cinnamon trade, with a focus on <strong>quality, traceability, and buyer trust</strong>. Whether a customer is looking for cinnamon bales, <strong>grades such as Alba, C5, or C4</strong>, or cinnamon products that meet export expectations, our aim is to offer a <strong>dependable starting point for long-term business</strong>.</p>
+                        </div>
+                    </div>
+                    <div class="about-image-sticky">
+                        <div class="about-image-caption">
+                            <p>✔ Consistent Quality Control</p>
+                            <p>✔ Direct Sourcing & In-House Processing</p>
+                            <p>✔ Logistics & Export Coordination</p>
+                            <p>✔ Flexible MOQ (Trial & Bulk Supply)</p>
+                            <p>✔ Custom Packaging Options</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section bg-light reveal">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Partner With Us</h2>
+                    <p>Send us your product requirements, and our team will get back to you with competitive quotes and processing timelines.</p>
+                </div>
+                
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <div class="contact-card">
+                            <h3>Reach Out Directly</h3>
+                            <p>We are available to discuss bulk orders, custom grading, and long-term contracts.</p>
+                            <div class="contact-actions">
+                                <a href="https://wa.me/94718313119?text=Hello%20ViduRasa,%20I'm%20interested%20in%20your%20Ceylon%20cinnamon.%20Please%20send%20pricing%20and%20specifications." target="_blank" rel="noopener" class="btn btn-whatsapp">Chat on WhatsApp</a>
+                                <a href="mailto:info@vidurasa.com" class="btn btn-secondary">Get Export Quote</a>
+                            </div>
+                            <div class="contact-details">
+                                <p><strong>Email:</strong> info@vidurasa.com</p>
+                                <p><strong>WhatsApp / Phone:</strong> +94 718313119</p>
+                                <p><strong>Location:</strong> Monaragala, Sri Lanka</p>
+                                <div class="map-embed" style="margin-top: 25px;">
+                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15844.967559145303!2d81.33523726999617!3d6.861587647486161!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae4512fef4294c5%3A0x27f6492c39450456!2sVidurasa%20Agricultural%20Products!5e0!3m2!1sen!2sus!4v1777102218388!5m2!1sen!2sus" width="100%" height="220" style="border:0; border-radius:8px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-form-wrapper">
+                        <form id="inquiryForm" class="inquiry-form" action="https://formspree.io/f/xyklergg" method="POST">
+                            <div class="form-group">
+                                <label for="name">Your Name / Title</label>
+                                <input type="text" id="name" name="name" placeholder="John Doe, Purchasing Manager" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="company">Company Name</label>
+                                <input type="text" id="company" name="company" placeholder="Global Spices Ltd." required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" name="_replyto" placeholder="john@globalspices.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Requirements (Grades, Quantity, Destination)</label>
+                                <textarea id="message" name="message" rows="5" placeholder="We are looking for 500kg of ALBA grade cinnamon shipped to Rotterdam..." required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-block">Get Export Quote</button>
+                            <div style="text-align: center; margin-top: 20px; color: var(--text-muted); font-size: 0.85rem; line-height: 1.5; border-top: 1px solid var(--border); padding-top: 15px;">
+                                <p><strong style="color: var(--text-main);">🔒 Secure Correspondence</strong><br>All shared business requirements remain confidential and will only be used by our export team to prepare your quote.</p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+                <!-- Trust Signals / Microcopy -->
+                <div style="text-align: center; margin-top: 40px; color: var(--text-muted); font-size: 0.95rem;">
+                    <p>Direct from Sri Lankan farmers – consistent quality guaranteed.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <div class="footer-logo-container">
+                    <img src="/images/vidurasalogo.png" alt="Vidurasa Agricultural Products - True Ceylon Cinnamon Supplier Logo" class="footer-logo" loading="lazy">
+                </div>
+                <p>Premium Ceylon Cinnamon Suppliers. Bringing the finest Sri Lankan spices to the global market.</p>
+            </div>
+            <div class="footer-links-group">
+                <h3>Quick Links</h3>
+                <ul class="footer-nav">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <h3>Connect</h3>
+                <div class="social-links">
+                    <a href="https://wa.me/94718313119" target="_blank" rel="noopener" aria-label="WhatsApp">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
+                        </svg>
+                    </a>
+                    <a href="mailto:info@vidurasa.com" aria-label="Email">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/vidurasa-agro-products-a89952335?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noopener" aria-label="LinkedIn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.facebook.com/share/1BigW9rHvh/" target="_blank" rel="noopener" aria-label="Facebook">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
+                        </svg>
+                    </a>
+                    <a href="https://youtube.com/@vidurasaagriculturalproducts?si=DFcH8Dr4PLPLIGPa" target="_blank" rel="noopener" aria-label="YouTube">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172 1.284.22 2.404.042 1.054.05 1.492.05 2.842 0 1.35-.008 1.788-.05 2.842-.048 1.12-.119 2.024-.22 2.404a2.01 2.01 0 0 1-1.415 1.42c-1.123.302-5.288.332-6.11.335h-.089c-.822-.003-4.987-.033-6.11-.335a2.01 2.01 0 0 1-1.415-1.42c-.101-.38-.172-1.284-.22-2.404-.042-1.054-.05-1.492-.05-2.842 0-1.35.008-1.788.05-2.842.048-1.12.119-2.024.22-2.404A2.01 2.01 0 0 1 3.5 2.334c1.123-.302 5.288-.332 6.11-.335zM6.41 10.84l4.98-2.84-4.98-2.84v5.68z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container" style="text-align: center;">
+                <p>&copy; 2026 Vidurasa Agricultural Products. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/94718313119?text=Hello%20ViduRasa,%20I'm%20interested%20in%20your%20Ceylon%20cinnamon.%20Please%20send%20pricing%20and%20specifications." class="whatsapp-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" viewBox="0 0 16 16" style="color: white;">
+            <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
+        </svg>
+    </a>
+
+    <!-- Cookie Banner -->
+    <div id="cookieConsentBanner" class="cookie-banner hidden">
+        <div class="cookie-content">
+            <p>We use cookies to analyze site traffic and enhance your experience. By continuing to use our website, you consent to our use of cookies.</p>
+            <div class="cookie-buttons">
+                <button id="acceptCookies" class="btn btn-primary">Got it</button>
+            </div>
+        </div>
     </div>
+
+    <!-- Product Details Modal -->
+    <div id="product-modal" class="modal">
+        <div class="modal-overlay"></div>
+        <span class="modal-close">&times;</span>
+        
+        <!-- Navigation Arrows -->
+        <button class="modal-nav prev-nav" aria-label="Previous Product">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        </button>
+        <button class="modal-nav next-nav" aria-label="Next Product">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
+
+        <div class="modal-track-container" id="modal-track-container">
+            <div class="modal-track" id="modal-track">
+                <!-- Javascript will inject .modal-card elements here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js?v=5"></script>
+    <script>
+        // Scrollspy for Navigation Highlighting
+        document.addEventListener("DOMContentLoaded", function() {
+            const sections = document.querySelectorAll("section");
+            const navLinks = document.querySelectorAll(".nav-links a");
+
+            window.addEventListener("scroll", () => {
+                let current = "";
+                sections.forEach((section) => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (pageYOffset >= sectionTop - 150) {
+                        current = section.getAttribute("id");
+                    }
+                });
+
+                navLinks.forEach((a) => {
+                    a.classList.remove("active");
+                    if (a.getAttribute("href").includes(current)) {
+                        a.classList.add("active");
+                    }
+                });
+            });
+
+            // Scroll Reveal Animation
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    } else {
+                        entry.target.classList.remove('active');
+                    }
+                });
+            }, { 
+                threshold: 0.05,
+                rootMargin: "0px 0px -50px 0px"
+            });
+
+            document.querySelectorAll('.reveal').forEach((el) => {
+                observer.observe(el);
+            });
+        });
+    </script>
 </body>
 </html>

@@ -1,4 +1,4 @@
-import Jimp from 'jimp';
+import { Jimp } from 'jimp';
 
 async function main() {
   const logo = await Jimp.read('vidurasalogo.png');
