@@ -1,235 +1,477 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const mobileBtn = document.querySelector('.mobile-menu-btn');
-    const navLinks = document.querySelector('.nav-links');
-    const headerLinks = document.querySelectorAll('.nav-links a');
-    const contactForm = document.getElementById('contactForm');
-    const formFeedback = document.getElementById('form-feedback');
-    const submitBtn = document.getElementById('submitBtn');
-    const sections = document.querySelectorAll('section');
+document.addEventListener("DOMContentLoaded", () => {
+    // Mobile menu toggle
+    const mobileBtn = document.querySelector(".mobile-menu-btn");
+    const navLinks = document.querySelector(".nav-links");
 
-    if (mobileBtn) {
-        mobileBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
+    if (mobileBtn && navLinks) {
+        mobileBtn.addEventListener("click", () => {
+            navLinks.classList.toggle("active");
+        });
+
+        // Close menu on link click
+        navLinks.querySelectorAll("a").forEach(link => {
+            link.addEventListener("click", () => {
+                navLinks.classList.remove("active");
+            });
         });
     }
 
-    // Scroll spy functionality
-    window.addEventListener('scroll', () => {
-        let current = '';
+    // Scroll spy for active link
+    const sections = document.querySelectorAll("section");
+    const navItems = document.querySelectorAll(".nav-links a");
 
+    window.addEventListener("scroll", () => {
+        let current = "";
+        
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            if (pageYOffset >= (sectionTop - 150)) {
-                current = section.getAttribute('id');
+            
+            // Adjust offset to account for fixed header
+            if (scrollY >= (sectionTop - 150)) {
+                current = section.getAttribute("id");
             }
         });
 
-        // Special case: if scrolled to the very bottom
-        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 10) {
-            current = sections[sections.length - 1].getAttribute('id');
+        navItems.forEach(item => {
+            item.classList.remove("active");
+            if (item.getAttribute("href") === `#${current}`) {
+                item.classList.add("active");
+            }
+        });
+        
+        // Handle case where we are at the top of the page for "home"
+        if (scrollY < 100) {
+            navItems.forEach(item => {
+                item.classList.remove("active");
+                if (item.getAttribute("href") === `#home` || item.getAttribute("href") === `/`) {
+                    item.classList.add("active");
+                }
+            });
+        }
+    });
+
+    // Handle form submission functionality for other needs if required in the future
+    // Formspree is used directly via HTML form action.
+
+    // Cookie Banner Logic
+    const cookieBanner = document.getElementById('cookieConsentBanner');
+    const acceptBtn = document.getElementById('acceptCookies');
+
+    if (cookieBanner) {
+        const consent = localStorage.getItem('cookieConsent');
+        
+        if (!consent) {
+            cookieBanner.classList.remove('hidden');
+            // Small delay to allow CSS transition to apply
+            setTimeout(() => {
+                cookieBanner.classList.add('show');
+            }, 100);
+
+            // Soft Opt-in Tracker: If they scroll, consider it consent
+            const handleScrollConsent = () => {
+                if (!localStorage.getItem('cookieConsent')) {
+                    handleConsent('accepted');
+                    window.removeEventListener('scroll', handleScrollConsent);
+                }
+            };
+            // Add a small delay so initial page loads don't accidentally trigger scroll events right away
+            setTimeout(() => {
+                window.addEventListener('scroll', handleScrollConsent, { passive: true, once: true });
+            }, 1000);
         }
 
-        headerLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === `#${current}`) {
-                link.classList.add('active');
+        const handleConsent = (status) => {
+            localStorage.setItem('cookieConsent', status);
+            cookieBanner.classList.remove('show');
+            setTimeout(() => {
+                cookieBanner.classList.add('hidden');
+            }, 300); // Wait for transition
+
+            if (status === 'accepted' && typeof gtag === 'function') {
+                gtag('consent', 'update', {
+                    'analytics_storage': 'granted'
+                });
+            }
+        };
+
+        if (acceptBtn) {
+            acceptBtn.addEventListener('click', () => handleConsent('accepted'));
+        }
+    }
+
+    // Scrollytelling functionality for Desktop
+    const scrollSteps = document.querySelectorAll('.scroll-trigger');
+    const visualTrack = document.getElementById('visualTrack');
+
+    // Sticky Main Title Compact State
+    const stickyMainTitle = document.querySelector('.sticky-main-title');
+    const scrollyContainer = document.querySelector('.scrolly-text');
+    
+    if (stickyMainTitle && scrollyContainer) {
+        window.addEventListener('scroll', () => {
+            const transformVal = stickyMainTitle.style.transform;
+            const currentY = parseFloat(transformVal.replace('translateY(', '').replace('px)', '')) || 0;
+            const rect = stickyMainTitle.getBoundingClientRect();
+            const naturalTop = rect.top - currentY;
+            
+            if (naturalTop <= 82) {
+                stickyMainTitle.classList.add('compact');
+                
+                const containerRect = scrollyContainer.getBoundingClientRect();
+                const stickyBottom = 80 + stickyMainTitle.offsetHeight;
+                
+                // Track the bottom of the scrolly white box
+                if (containerRect.bottom < stickyBottom) {
+                     const overlap = stickyBottom - containerRect.bottom;
+                     stickyMainTitle.style.transform = `translateY(-${overlap}px)`;
+                } else {
+                     stickyMainTitle.style.transform = `translateY(0px)`;
+                }
+            } else {
+                stickyMainTitle.classList.remove('compact');
+                stickyMainTitle.style.transform = `translateY(0px)`;
             }
         });
-    });
+    }
 
-    // Close menu when a link is clicked
-    headerLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            if (navLinks.classList.contains('active')) {
-                navLinks.classList.remove('active');
+    if (scrollSteps.length > 0 && visualTrack && window.innerWidth > 768) {
+        // We only apply this complex logic on larger screens where the layout is side-by-side
+        const observerOptions = {
+            root: null,
+            rootMargin: '-30% 0px -60% 0px',
+            threshold: 0
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const stepIndex = parseInt(entry.target.getAttribute('data-step'), 10);
+                    
+                    // Slide the visual track
+                    visualTrack.style.transform = `translateX(-${stepIndex * 25}%)`;
+                }
+            });
+        }, observerOptions);
+
+        scrollSteps.forEach(step => observer.observe(step));
+    }
+
+    // Sticky Products Header Logic
+    const productsHeader = document.querySelector('.sticky-products-header');
+    const productGrid = document.querySelector('.product-grid');
+    
+    if (productsHeader && productGrid) {
+        window.addEventListener('scroll', () => {
+            const transformVal = productsHeader.style.transform;
+            const currentY = parseFloat(transformVal.replace('translateY(', '').replace('px)', '')) || 0;
+            const rect = productsHeader.getBoundingClientRect();
+            const naturalTop = rect.top - currentY;
+            
+            if (naturalTop <= 82) {
+                productsHeader.classList.add('compact');
+                if (window.innerWidth > 768) {
+                    const gridRect = productGrid.getBoundingClientRect();
+                    const stickyBottom = 80 + productsHeader.offsetHeight;
+                    
+                    // Track the bottom of the product grid (the white boxes)
+                    if (gridRect.bottom < stickyBottom) {
+                         const overlap = stickyBottom - gridRect.bottom;
+                         productsHeader.style.transform = `translateY(-${overlap}px)`;
+                    } else {
+                         productsHeader.style.transform = `translateY(0px)`;
+                    }
+                }
+            } else {
+                productsHeader.classList.remove('compact');
+                productsHeader.style.transform = `translateY(0px)`;
             }
         });
-    });
+    }
 
-    // Product Modal Data and Logic
-    const productData = {
+    // Sticky About Title Logic
+    const aboutTitle = document.querySelector('h2.sticky-about-title');
+    const aboutGrid = document.querySelector('.about-grid-new');
+    
+    if (aboutTitle && aboutGrid) {
+        window.addEventListener('scroll', () => {
+            const rect = aboutTitle.getBoundingClientRect();
+            if (rect.top <= 82) {
+                aboutTitle.classList.add('compact');
+            } else {
+                aboutTitle.classList.remove('compact');
+            }
+        });
+    }
+
+    // Modal Logic
+    const modal = document.getElementById('product-modal');
+    const modalClose = document.querySelector('.modal-close');
+    const modalOverlay = document.querySelector('.modal-overlay');
+    const productCards = document.querySelectorAll('.clickable-card');
+    const prevBtn = document.querySelector('.prev-nav');
+    const nextBtn = document.querySelector('.next-nav');
+    const modalContent = document.querySelector('.modal-content');
+
+    let currentProductIndex = 0;
+    const productIds = ['alba', 'c5', 'c4', 'h', 'powder', 'quillings', 'cut-pieces', 'custom'];
+
+    const productsData = {
         'alba': {
-            title: 'ALBA (5 Inch)',
-            img: 'https://picsum.photos/seed/cinnamon1/800/600',
-            desc: `
-                <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 15px;">The most prized, ultra-premium grade of Ceylon Cinnamon. Highly sought after for its exceptional sweetness, fragile bark, and visual perfection.</p>
-                <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.95rem; color: var(--text-main);">
-                    <li style="margin-bottom: 8px;"><strong>Diameter:</strong> ~6mm</li>
-                    <li style="margin-bottom: 8px;"><strong>Use Case:</strong> Luxury retail, gourmet culinary markets</li>
-                </ul>
-            `
+            title: 'Cinnamon Sticks (Alba)',
+            image: '/public/images/alba.png',
+            desc: 'Alba is the most prized and rarest grade of Ceylon Cinnamon. It is crafted with extremely thin quills, resulting in a sweet taste and powerful aroma. Widely used in delicate infusions and gourmet presentations where visual perfection and refined flavor are paramount.',
+            specs: [
+                ['Diameter', '6mm - 10mm'],
+                ['Texture', 'Smooth, very thin quills'],
+                ['Color', 'Golden brown'],
+                ['Aroma', 'Sweet & Intense'],
+                ['Grade', 'Premium Alba']
+            ]
         },
-        'special': {
-            title: 'Extra Special & Special',
-            img: 'https://picsum.photos/seed/cinnamon2/800/600',
-            desc: `
-                <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 15px;">Top-tier premium grades remaining highly delicate. Features exceptionally thin bark with a nuanced and aromatic sweetness.</p>
-                <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.95rem; color: var(--text-main);">
-                    <li style="margin-bottom: 8px;"><strong>Diameter:</strong> 7mm - 9mm</li>
-                    <li style="margin-bottom: 8px;"><strong>Use Case:</strong> Premium specialty stores, high-end packaging</li>
-                </ul>
-            `
+        'c5': {
+            title: 'Cinnamon Sticks (C5)',
+            image: '/public/images/c5.png',
+            desc: 'A high-end continental grade popular in the European market. It offers a refined flavor profile with excellent visual appeal. Perfect for boutique retail and premium culinary applications.',
+            specs: [
+                ['Diameter', '10mm - 12mm'],
+                ['Texture', 'Solid, smooth quills'],
+                ['Color', 'Light brown'],
+                ['Usage', 'Gourmet cooking, Retail'],
+                ['Grade', 'Continental 5']
+            ]
         },
-        'c-grades': {
-            title: 'C-Grades: C5, C4',
-            img: 'https://picsum.photos/seed/cinnamon3/800/600',
-            desc: `
-                <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 15px;">Continental grades offering a perfect balance of excellent flavor profile and physical structural integrity for handling.</p>
-                <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.95rem; color: var(--text-main);">
-                    <li style="margin-bottom: 8px;"><strong>C5:</strong> 10-12mm diameter (Standard premium)</li>
-                    <li style="margin-bottom: 8px;"><strong>C4:</strong> 13-14mm diameter</li>
-                    <li style="margin-bottom: 8px;"><strong>Use Case:</strong> Standard retail, commercial food service</li>
-                </ul>
-            `
+        'c4': {
+            title: 'Cinnamon Sticks (C4)',
+            image: '/public/images/c4.png',
+            desc: 'The standard high-quality continental grade. It is versatile and widely used across retail and hospitality sectors for its consistent flavor and manageable size.',
+            specs: [
+                ['Diameter', '13mm - 16mm'],
+                ['Texture', 'Firm quills'],
+                ['Color', 'Rust brown'],
+                ['Market', 'Worldwide distribution'],
+                ['Grade', 'Continental 4']
+            ]
         },
-        'h-grades': {
-            title: 'H-Grades: H1, H2',
-            img: 'https://picsum.photos/seed/cinnamon4/800/600',
-            desc: `
-                <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 15px;">Hamburg grades composed of heavier, thicker bark components. Delivers a highly robust flavor profile and darker color.</p>
-                <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.95rem; color: var(--text-main);">
-                    <li style="margin-bottom: 8px;"><strong>H1:</strong> ~22mm diameter</li>
-                    <li style="margin-bottom: 8px;"><strong>H2:</strong> ~25mm diameter</li>
-                    <li style="margin-bottom: 8px;"><strong>Use Case:</strong> Bulk spice processing, heavy extraction</li>
-                </ul>
-            `
+        'h': {
+            title: 'Cinnamon Sticks (H)',
+            image: '/public/images/h.png',
+            desc: 'Hamburg grades are thicker and harder than Alba or C grades. They are excellent for industrial applications, distillation, and scenarios where a robust cinnamon presence is required.',
+            specs: [
+                ['Diameter', '20mm - 25mm'],
+                ['Type', 'Hard quills'],
+                ['Essential Oil', 'High content'],
+                ['Ideal for', 'Industrial grinding, Oils'],
+                ['Grade', 'Hamburg (H)']
+            ]
         },
-        'industrial': {
-            title: 'Industrial & Lower Grades',
-            img: 'https://picsum.photos/seed/cinnamon5/800/600',
-            desc: `
-                <div style="display: flex; flex-direction: column; gap: 15px;">
-                    <div style="background: #fafafa; padding: 15px; border-radius: 5px; border: 1px solid #f0f0f0;">
-                        <h4 style="margin: 0 0 8px 0; font-size: 0.95rem;">OFFCUT - C4/H2</h4>
-                        <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0; line-height: 1.5;">Clean, dust-free machine-cut pieces (TBC) scaled from premium grades. Excellent for tea bags, brewing, and RTD beverage manufacturing.</p>
-                    </div>
-                    <div style="background: #fafafa; padding: 15px; border-radius: 5px; border: 1px solid #f0f0f0;">
-                        <h4 style="margin: 0 0 8px 0; font-size: 0.95rem;">QUILLING SUPPER & QUILLING</h4>
-                        <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0; line-height: 1.5;">High-quality broken sticks and inner bark. Holds the same signature aroma at a lower cost. Ideal for commercial grinding and wholesale bakeries.</p>
-                    </div>
-                    <div style="background: #fafafa; padding: 15px; border-radius: 5px; border: 1px solid #f0f0f0;">
-                        <h4 style="margin: 0 0 8px 0; font-size: 0.95rem;">CHIPS</h4>
-                        <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0; line-height: 1.5;">Unpeelable bark and robust outer pieces containing potent volatile oils. The standard foundational raw material for essential oil distillation.</p>
-                    </div>
-                </div>
-            `
+        'powder': {
+            title: 'Cinnamon Powder',
+            image: '/public/images/powder.png',
+            desc: 'Our cinnamon powder is ground specifically from high-grade quills (not waste), ensuring the highest essential oil level and absolute purity. Free from any additives or fillers.',
+            specs: [
+                ['Purity', '100% Pure Ceylon'],
+                ['Mesh Size', 'Fine (Standard)'],
+                ['Additive', 'None'],
+                ['Shelf Life', '24 Months'],
+                ['Grade', 'Pure Powder']
+            ]
+        },
+        'quillings': {
+            title: 'Cinnamon Quillings',
+            image: '/public/images/quillings.png',
+            desc: 'Broken pieces of cinnamon quills obtained during the grading process. Perfect for tea blending, extraction, and pharmaceutical applications where quill structure is secondary to flavor extraction.',
+            specs: [
+                ['Quality', 'High Essential Oil'],
+                ['Format', 'Small broken pieces'],
+                ['Color', 'Dark brown to light'],
+                ['Use Cases', 'Tea, Pharmaceutical'],
+                ['Grade', 'Quillings']
+            ]
+        },
+        'cut-pieces': {
+            title: 'Cinnamon Cut Pieces',
+            image: '/public/images/cut.png',
+            desc: 'Precisely cut quills available in uniform lengths. These are pre-cut for specific retail jars, specialized food service needs, or premium spice racks.',
+            specs: [
+                ['Length', '1 inch to 5 inches'],
+                ['Grade', 'Available in various'],
+                ['Packaging', 'Bulk or Custom'],
+                ['Convenience', 'Ready-to-use'],
+                ['Grade', 'Cuts']
+            ]
+        },
+        'custom': {
+            title: 'Custom & Value-Added',
+            image: '/public/images/product-image.png',
+            desc: 'We provide specialized processing services including custom cutting, specialized cleaning, and private labeling for international distributors and large-scale retail chains.',
+            specs: [
+                ['Service', 'Private Labeling'],
+                ['Cutting', 'Custom lengths'],
+                ['Cleaning', 'Steam sterilized available'],
+                ['Requests', 'MOQ applicable'],
+                ['Support', 'Full Customization']
+            ]
         }
     };
 
-    const modal = document.getElementById('productModal');
-    const closeModal = document.querySelector('.close-modal');
-    const modalImg = document.getElementById('modalImg');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalDesc = document.getElementById('modalDesc');
+    const modalTrack = document.getElementById('modal-track');
 
-    if (modal && closeModal) {
-        // Now adding click to the whole .product-visual-card
-        document.querySelectorAll('.product-visual-card').forEach(card => {
-            card.addEventListener('click', () => {
-                const productId = card.getAttribute('data-id');
-                const data = productData[productId];
-                if (data) {
-                    modalImg.src = data.img;
-                    modalImg.alt = data.title;
-                    modalTitle.textContent = data.title;
-                    modalDesc.innerHTML = data.desc;
-                    modal.classList.add('active');
+    // Build cards
+    if (modalTrack) {
+        modalTrack.innerHTML = '';
+        productIds.forEach((id) => {
+            const data = productsData[id];
+            
+            let specsHtml = '';
+            data.specs.forEach(spec => {
+                specsHtml += `<li><strong>${spec[0]}</strong> <span>${spec[1]}</span></li>`;
+            });
+            
+            const cardHtml = `
+                <div class="modal-card" id="modal-card-${id}">
+                    <div class="modal-body">
+                        <div class="modal-grid">
+                            <div class="modal-image-container">
+                                <img src="${data.image}" alt="${data.title}">
+                            </div>
+                            <div class="modal-details">
+                                <div class="modal-details-header">
+                                    <h2>${data.title}</h2>
+                                </div>
+                                <div class="modal-details-scrollable">
+                                    <div class="modal-desc">${data.desc}</div>
+                                    <div class="modal-specs">
+                                        <h4>Specifications</h4>
+                                        <ul>
+                                            ${specsHtml}
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="modal-details-footer">
+                                    <button type="button" class="btn btn-primary modal-quote-btn" style="display: block; text-align: center; width: 100%;">Request a Quote</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            modalTrack.innerHTML += cardHtml;
+        });
+    }
+
+    function goToSlide(index) {
+        currentProductIndex = (index + productIds.length) % productIds.length;
+        const track = document.getElementById('modal-track');
+        const cards = document.querySelectorAll('.modal-card');
+        
+        if (cards.length > 0) {
+            cards.forEach((card, i) => {
+                if (i === currentProductIndex) {
+                    card.classList.add('active-card');
+                    // Reset scroll position of inner details
+                    const scrollable = card.querySelector('.modal-details-scrollable');
+                    if (scrollable) scrollable.scrollTop = 0;
+                } else {
+                    card.classList.remove('active-card');
                 }
             });
-        });
-
-        closeModal.addEventListener('click', () => {
-            modal.classList.remove('active');
-        });
-
-        window.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                modal.classList.remove('active');
-            }
-        });
-
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && modal.classList.contains('active')) {
-                modal.classList.remove('active');
-            }
-        });
-
-        document.addEventListener('click', (e) => {
-            // Handle clicking the modal contact link
-            if (e.target.closest('.modal-contact-link')) {
-                // If we are on index.html where the contact form is
-                if (document.getElementById('contactForm')) {
-                    e.preventDefault();
-                    modal.classList.remove('active');
-                    const targetEle = document.getElementById('contact');
-                    if (targetEle) {
-                        targetEle.scrollIntoView({ behavior: 'smooth' });
-                        setTimeout(() => {
-                            const firstInput = document.querySelector('#contactForm input');
-                            if (firstInput) firstInput.focus();
-                        }, 500);
-                    }
-                }
-            }
-        });
-    }
-
-    // Auto focus contact form when navigated via hash
-    if (window.location.hash === '#contact') {
-        setTimeout(() => {
-            const firstInput = document.querySelector('#contactForm input');
-            if (firstInput) firstInput.focus();
-        }, 800);
-    }
-
-    // Special handler to set 'Home' active on initial load if at the top
-    if (window.scrollY < 100) {
-        let homeLink = document.querySelector('.nav-links a[href="#home"]');
-        if (homeLink) homeLink.classList.add('active');
-    }
-
-    if (contactForm) {
-        contactForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
             
-            submitBtn.textContent = 'Sending...';
-            submitBtn.disabled = true;
-            formFeedback.style.display = 'none';
+            const targetCard = cards[currentProductIndex];
+            const cardWidth = targetCard.offsetWidth;
+            const centerPos = (window.innerWidth / 2) - (targetCard.offsetLeft + cardWidth / 2);
+            track.style.transform = `translateX(${centerPos}px)`;
+        }
+    }
 
-            const formData = new FormData(contactForm);
+    window.addEventListener('resize', () => {
+        if (modal.classList.contains('active')) {
+            goToSlide(currentProductIndex);
+        }
+    });
 
-            try {
-                // We use the action URL defined safely in the HTML
-                const response = await fetch(contactForm.action, {
-                    method: 'POST',
-                    headers: { 'Accept': 'application/json' },
-                    body: formData
-                });
-
-                const result = await response.json();
-
-                if (response.ok) {
-                    formFeedback.textContent = 'Thank you! Your quote request has been sent successfully.';
-                    formFeedback.style.backgroundColor = '#d4edda';
-                    formFeedback.style.color = '#155724';
-                    formFeedback.style.border = '1px solid #c3e6cb';
-                    formFeedback.style.display = 'block';
-                    contactForm.reset();
-                } else {
-                    throw new Error(result.error || 'Failed to send message.');
-                }
-            } catch (error) {
-                console.error(error);
-                formFeedback.textContent = 'There was a problem sending your message. Please check the server configuration and try again.';
-                formFeedback.style.backgroundColor = '#f8d7da';
-                formFeedback.style.color = '#721c24';
-                formFeedback.style.border = '1px solid #f5c6cb';
-                formFeedback.style.display = 'block';
-            } finally {
-                submitBtn.textContent = 'Get Your Custom Quote';
-                submitBtn.disabled = false;
+    productCards.forEach((card) => {
+        card.addEventListener('click', () => {
+            const productId = card.getAttribute('data-product');
+            const pIndex = productIds.indexOf(productId);
+            
+            modal.classList.add('active');
+            document.body.classList.add('modal-open');
+            document.documentElement.classList.add('modal-open');
+            
+            const track = document.getElementById('modal-track');
+            if (track) track.style.transition = 'none';
+            
+            goToSlide(pIndex);
+            
+            if (track) {
+                // Force reflow
+                track.offsetHeight;
+                track.style.transition = 'transform 0.5s cubic-bezier(0.25, 1, 0.5, 1)';
             }
         });
+    });
+
+    function closeModal() {
+        modal.classList.remove('active');
+        document.body.classList.remove('modal-open');
+        document.documentElement.classList.remove('modal-open');
     }
+
+    if (modalClose) modalClose.addEventListener('click', closeModal);
+    if (modalOverlay) modalOverlay.addEventListener('click', closeModal);
+
+    // Add listener for all quote buttons
+    document.addEventListener('click', (e) => {
+        if (e.target && e.target.classList.contains('modal-quote-btn')) {
+            closeModal();
+            setTimeout(() => {
+                const contactSection = document.getElementById('contact');
+                if (contactSection) {
+                    contactSection.scrollIntoView({ behavior: 'smooth' });
+                    setTimeout(() => {
+                        const firstInput = contactSection.querySelector('input, textarea');
+                        if (firstInput) {
+                            firstInput.focus();
+                        }
+                    }, 800); // give enough time for scroll
+                }
+            }, 300); // allow modal animation to fade out
+        }
+    });
+
+    prevBtn?.addEventListener('click', (e) => {
+        e.stopPropagation();
+        goToSlide(currentProductIndex - 1);
+    });
+
+    nextBtn?.addEventListener('click', (e) => {
+        e.stopPropagation();
+        goToSlide(currentProductIndex + 1);
+    });
+
+    // Navigation Shortcuts
+    document.addEventListener('keydown', (e) => {
+        if (!modal.classList.contains('active')) return;
+        
+        if (e.key === 'ArrowLeft') goToSlide(currentProductIndex - 1);
+        if (e.key === 'ArrowRight') goToSlide(currentProductIndex + 1);
+        if (e.key === 'Escape') closeModal();
+    });
+
+    // Swipe Support
+    let touchStartX = 0;
+    modal.addEventListener('touchstart', e => {
+        touchStartX = e.changedTouches[0].screenX;
+    }, {passive: true});
+
+    modal.addEventListener('touchend', e => {
+        const touchEndX = e.changedTouches[0].screenX;
+        const diff = touchStartX - touchEndX;
+
+        if (Math.abs(diff) > 50) {
+            if (diff > 0) goToSlide(currentProductIndex + 1);
+            else goToSlide(currentProductIndex - 1);
+        }
+    }, {passive: true});
+
 });

@@ -218,7 +218,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const productsData = {
         'alba': {
             title: 'Cinnamon Sticks (Alba)',
-            image: '/images/alba.png',
+            image: '/public/images/alba.png',
             desc: 'Alba is the most prized and rarest grade of Ceylon Cinnamon. It is crafted with extremely thin quills, resulting in a sweet taste and powerful aroma. Widely used in delicate infusions and gourmet presentations where visual perfection and refined flavor are paramount.',
             specs: [
                 ['Diameter', '6mm - 10mm'],
@@ -230,7 +230,7 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         'c5': {
             title: 'Cinnamon Sticks (C5)',
-            image: '/images/c5.png',
+            image: '/public/images/c5.png',
             desc: 'A high-end continental grade popular in the European market. It offers a refined flavor profile with excellent visual appeal. Perfect for boutique retail and premium culinary applications.',
             specs: [
                 ['Diameter', '10mm - 12mm'],
@@ -242,7 +242,7 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         'c4': {
             title: 'Cinnamon Sticks (C4)',
-            image: '/images/c4.png',
+            image: '/public/images/c4.png',
             desc: 'The standard high-quality continental grade. It is versatile and widely used across retail and hospitality sectors for its consistent flavor and manageable size.',
             specs: [
                 ['Diameter', '13mm - 16mm'],
@@ -254,7 +254,7 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         'h': {
             title: 'Cinnamon Sticks (H)',
-            image: '/images/h.png',
+            image: '/public/images/h.png',
             desc: 'Hamburg grades are thicker and harder than Alba or C grades. They are excellent for industrial applications, distillation, and scenarios where a robust cinnamon presence is required.',
             specs: [
                 ['Diameter', '20mm - 25mm'],
@@ -266,7 +266,7 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         'powder': {
             title: 'Cinnamon Powder',
-            image: '/images/powder.png',
+            image: '/public/images/powder.png',
             desc: 'Our cinnamon powder is ground specifically from high-grade quills (not waste), ensuring the highest essential oil level and absolute purity. Free from any additives or fillers.',
             specs: [
                 ['Purity', '100% Pure Ceylon'],
@@ -278,7 +278,7 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         'quillings': {
             title: 'Cinnamon Quillings',
-            image: '/images/quillings.png',
+            image: '/public/images/quillings.png',
             desc: 'Broken pieces of cinnamon quills obtained during the grading process. Perfect for tea blending, extraction, and pharmaceutical applications where quill structure is secondary to flavor extraction.',
             specs: [
                 ['Quality', 'High Essential Oil'],
@@ -290,7 +290,7 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         'cut-pieces': {
             title: 'Cinnamon Cut Pieces',
-            image: '/images/cut.png',
+            image: '/public/images/cut.png',
             desc: 'Precisely cut quills available in uniform lengths. These are pre-cut for specific retail jars, specialized food service needs, or premium spice racks.',
             specs: [
                 ['Length', '1 inch to 5 inches'],
@@ -302,7 +302,7 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         'custom': {
             title: 'Custom & Value-Added',
-            image: '/images/product-image.png',
+            image: '/public/images/product-image.png',
             desc: 'We provide specialized processing services including custom cutting, specialized cleaning, and private labeling for international distributors and large-scale retail chains.',
             specs: [
                 ['Service', 'Private Labeling'],
