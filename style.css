@@ -35,7 +35,7 @@ body {
     letter-spacing: 0;
     -webkit-font-smoothing: antialiased;
     background-color: var(--bg-main);
-    background-image: url('/images/light-texture.png');
+    background-image: url('/public/images/light-texture.png');
     position: relative;
     overflow-x: clip;
 }
@@ -306,7 +306,7 @@ body::after {
     left: 0;
     width: 100%;
     height: 100%;
-    background: url('/images/hero-cinnamon-wide.png') center/cover;
+    background: url('/public/images/hero-cinnamon-wide.png') center/cover;
     z-index: 0;
     animation: heroBgZoom 20s ease-out infinite alternate;
 }
@@ -370,7 +370,7 @@ body::after {
     content: '';
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
-    background-image: url('/images/light-texture.png');
+    background-image: url('/public/images/light-texture.png');
     opacity: 0.1;
     pointer-events: none;
     z-index: 0;
@@ -383,7 +383,7 @@ body::after {
     bottom: 0;
     width: 300px;
     height: 300px;
-    background: url('/images/leaf-transparent.png') no-repeat bottom right;
+    background: url('/public/images/leaf-transparent.png') no-repeat bottom right;
     background-size: contain;
     opacity: 0.15;
     pointer-events: none;
@@ -1349,7 +1349,7 @@ h2.sticky-about-title {
 /* Footer */
 footer {
     background-color: #2C1F1A; /* Deep warm brown/charcoal replacing the blue */
-    background-image: url('/images/organic-pattern.png');
+    background-image: url('/public/images/organic-pattern.png');
     background-size: cover;
     background-blend-mode: overlay;
     color: var(--white);
@@ -1722,5 +1722,27 @@ footer {
     
     .footer-content {
         grid-template-columns: 1fr;
+    }
+}
+
+/* Contact Detail Links */
+.contact-link {
+    color: var(--secondary);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    transition: color 0.3s ease;
+}
+
+.contact-link:hover {
+    color: var(--accent);
+}
+
+@media (min-width: 769px) { 
+    .phone-link-desktop-disabled {
+        pointer-events: none;
+        text-decoration: none !important;
+        color: var(--secondary);
+        cursor: default;
     }
 }
